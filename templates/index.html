@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao Mundo DevOps!</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #555;
-            line-height: 1.6em;
-        }
-    </style>
+    <title>Calendário Simples</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Bem-vindo ao Mundo DevOps!</h1>
-    <h2>Nossa primeira aplicação web DevOps em Flask</h2>
-    <p>Olá Mundo DevOps! Esta é a nossa aplicação web de demonstração DevOps, construída com Flask e pronta para ser implantada com um pipeline CI/CD.</p>
-    <p>Em breve, vamos automatizar o deploy desta aplicação usando Docker e Jenkins!</p>
+    <div class="container">
+        <div class="calendar">
+            <div class="calendar-header">
+                <a href="/?ano={{ ano_anterior }}&mes={{ mes_anterior }}" class="nav-btn prev-btn">
+                    &lt; Anterior
+                </a>
+                <h2 class="month-year">{{ titulo_calendario }}</h2>
+                <a href="/?ano={{ ano_proximo }}&mes={{ mes_proximo }}" class="nav-btn next-btn">
+                    Próximo &gt;
+                </a>
+            </div>
+            {{ calendario_html|safe }}
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,89 @@
+body {
+    font-family: 'Arial', sans-serif; /* Fonte mais moderna */
+    background-color: #f4f7f9; /* Cor de fundo mais suave */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Centralizar verticalmente */
+}
+
+.container {
+    background-color: #fff; /* Fundo branco para o calendário */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 30px;
+    width: 90%; /* Largura responsiva */
+    max-width: 600px; /* Largura máxima */
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.month-year {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+}
+
+.nav-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff; /* Cor azul primária */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transição suave no hover */
+}
+
+.nav-btn:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Bordas da tabela unidas */
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #eee; /* Bordas mais claras para a tabela */
+}
+
+th {
+    background-color: #f0f0f0; /* Fundo cinza claro para os cabeçalhos dos dias da semana */
+    font-weight: bold;
+    color: #555;
+}
+
+td {
+    font-weight: normal;
+    color: #666;
+}
+
+td.today {
+    background-color: #cce5ff; /* Cor de destaque para o dia atual */
+}
+
+td.noday {
+    color: #ccc; /* Cor para os dias de outros meses (vazios) */
+}
+
+/* Estilo para links dentro das células (números dos dias) */
+td a {
+    display: block; /* Para preencher a célula */
+    text-decoration: none;
+    color: inherit; /* Herda a cor do td */
+}
+
+td a:hover {
+    background-color: #e0e0e0; /* Leve destaque no hover dos dias */
+    border-radius: 5px;
+}

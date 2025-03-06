@@ -18,3 +18,24 @@ EXPOSE 5000
 
 # Define o comando para executar a aplicação Flask
 CMD ["python", "app.py"]
+
+stage('Deploy para Produção') {
+      steps {
+        echo 'Implantando para Ambiente de Produção...'
+        script {
+          dockerContainerNameProd = "flask-app-devops-container-prod"
+          dockerContainerNameTest = "flask-app-devops-container-test"
+
+          // Para o container de teste (se estiver rodando)
+          sh "docker stop ${dockerContainerNameTest} || true"
+          sh "docker rm ${dockerContainerNameTest} || true"
+            // Para o container de produção existente (se estiver rodando)
+          sh "docker stop ${dockerContainerNameProd} || true"
+          sh "docker rm ${dockerContainerNameProd} || true"
+          // Roda um novo container de produção
+          dockerImage.run("--name ${dockerContainerNameProd} -d -p 5000:5000")
+
+          echo "Aplicação implantada em http://localhost:5000 (Produção)"
+        }
+      }
+    }

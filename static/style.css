@@ -1,21 +1,23 @@
 body {
-    font-family: 'Arial', sans-serif; /* Fonte mais moderna */
-    background-color: #f4f7f9; /* Cor de fundo mais suave */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Centralizar verticalmente */
+    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Transição suave para as cores */
 }
 
 .container {
-    background-color: #fff; /* Fundo branco para o calendário */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    width: 90%; /* Largura responsiva */
-    max-width: 600px; /* Largura máxima */
+    width: 90%;
+    max-width: 600px;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transição suave */
 }
 
 .calendar-header {
@@ -29,61 +31,108 @@ body {
     font-size: 1.5em;
     color: #333;
     margin: 0;
+    transition: color 0.5s ease; /* Transição suave para a cor */
 }
 
 .nav-btn {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #007bff; /* Cor azul primária */
+    background-color: #007bff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s ease; /* Transição suave no hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 .nav-btn:hover {
-    background-color: #0056b3; /* Azul mais escuro no hover */
+    background-color: #0056b3;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse; /* Bordas da tabela unidas */
+    border-collapse: collapse;
 }
 
 th, td {
     text-align: center;
     padding: 10px;
-    border: 1px solid #eee; /* Bordas mais claras para a tabela */
+    border: 1px solid #eee;
+    transition: border-color 0.5s ease, color 0.5s ease; /* Transição suave */
 }
 
 th {
-    background-color: #f0f0f0; /* Fundo cinza claro para os cabeçalhos dos dias da semana */
+    background-color: #f0f0f0;
     font-weight: bold;
     color: #555;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Transição suave */
 }
 
 td {
     font-weight: normal;
     color: #666;
+    transition: color 0.5s ease; /* Transição suave */
 }
 
 td.today {
-    background-color: #cce5ff; /* Cor de destaque para o dia atual */
+    background-color: #cce5ff;
 }
 
 td.noday {
-    color: #ccc; /* Cor para os dias de outros meses (vazios) */
+    color: #ccc;
 }
 
-/* Estilo para links dentro das células (números dos dias) */
 td a {
-    display: block; /* Para preencher a célula */
+    display: block;
     text-decoration: none;
-    color: inherit; /* Herda a cor do td */
+    color: inherit;
 }
 
 td a:hover {
-    background-color: #e0e0e0; /* Leve destaque no hover dos dias */
+    background-color: #e0e0e0;
     border-radius: 5px;
+}
+
+/* Estilos para Dark Mode */
+body.dark-mode {
+    background-color: #333; /* Fundo escuro para o body */
+    color: #eee;         /* Cor do texto clara */
+}
+
+body.dark-mode .container {
+    background-color: #444; /* Fundo mais escuro para o container */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Sombra para dark mode */
+}
+
+body.dark-mode .month-year,
+body.dark-mode th,
+body.dark-mode td,
+body.dark-mode td a {
+    color: #eee;         /* Cor do texto clara para elementos no calendário */
+}
+
+body.dark-mode th {
+    background-color: #555; /* Fundo mais escuro para o cabeçalho */
+}
+
+body.dark-mode td {
+    border-color: #666; /* Cor da borda mais escura para as células */
+}
+
+body.dark-mode .nav-btn {
+    background-color: #666; /* Cor de fundo escura para os botões */
+    color: #fff;         /* Cor do texto dos botões clara */
+}
+
+body.dark-mode .nav-btn:hover {
+    background-color: #888; /* Cor de fundo mais clara ao passar o mouse (em dark mode) */
+}
+
+body.dark-mode td.today {
+    background-color: #0056b3; /* Cor de destaque para 'today' em dark mode - um azul mais escuro pode ser melhor */
+    color: #fff;            /* Garante que o texto no dia 'today' seja visível em dark mode */
+}
+
+body.dark-mode td.noday {
+    color: #777; /* Cor para dias 'noday' em dark mode - um cinza mais claro */
 }

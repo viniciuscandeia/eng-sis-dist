@@ -17,9 +17,42 @@
                 <a href="/?ano={{ ano_proximo }}&mes={{ mes_proximo }}" class="nav-btn next-btn">
                     Próximo &gt;
                 </a>
+                <button id="darkModeToggle" class="nav-btn" aria-label="Alternar modo de visualização para escuro ou claro">
+                    <span id="darkModeIcon">🌙</span>
+                </button>
             </div>
             {{ calendario_html|safe }}
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            const darkModeIcon = document.getElementById('darkModeIcon');
+
+            darkModeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                    darkModeIcon.textContent = '☀️'; // Muda para o sol quando o modo escuro está ON
+                    darkModeToggle.setAttribute('aria-label', 'Desativar modo escuro'); // Atualiza aria-label para acessibilidade
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                    darkModeIcon.textContent = '🌙'; // Volta para a lua quando o modo claro está ON
+                    darkModeToggle.setAttribute('aria-label', 'Ativar modo escuro'); // Atualiza aria-label para acessibilidade
+                }
+            });
+
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeIcon.textContent = '☀️'; // Define para sol inicialmente se o modo escuro estiver salvo
+                darkModeToggle.setAttribute('aria-label', 'Desativar modo escuro'); // Define aria-label inicial para acessibilidade
+            } else {
+                darkModeIcon.textContent = '🌙'; // Define para lua inicialmente se o modo claro estiver salvo
+                darkModeToggle.setAttribute('aria-label', 'Ativar modo escuro'); // Define aria-label inicial para acessibilidade
+            }
+        });
+    </script>
 </body>
 </html>

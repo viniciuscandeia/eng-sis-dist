@@ -21,7 +21,6 @@ def calendario():
         ano = int(ano_param)
         mes = date.today().month
 
-
     # Gerar o calendário HTML usando a biblioteca calendar do Python
     cal = calendar.HTMLCalendar(calendar.MONDAY) # Define que a semana começa na segunda-feira
     calendario_html = cal.formatmonth(ano, mes)
